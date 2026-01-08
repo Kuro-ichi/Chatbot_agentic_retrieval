@@ -1,0 +1,13 @@
+{
+  "request_id": "demo",
+  "took_ms": 123,
+  "answer": "Không tìm thấy trong tài liệu hiện có.\n\nGợi ý:\n- Bạn có thể cung cấp thêm tên tài liệu/quy trình, mã hệ thống, hoặc từ khoá chính xác.\n- Nếu có, hãy cho biết nguồn tài liệu (policy/sop/tech/wiki) hoặc khoảng thời gian cập nhật.",
+  "meta": {
+    "refine_used": true,
+    "evidence": {
+      "ok": false,
+      "reason": "no_hits"
+    },
+    "chunks": []
+  }
+}

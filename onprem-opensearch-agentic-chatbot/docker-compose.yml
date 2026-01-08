@@ -1,0 +1,21 @@
+services:
+  backend-node:
+    build:
+      context: ./backend-node
+    env_file: ./.env
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+
+  # Optional: FastAPI proxy/wrapper (exposes /chat at :8001)
+  backend-fastapi:
+    build:
+      context: ./backend-fastapi
+    environment:
+      - FASTAPI_PORT=8001
+      - NODE_BACKEND_URL=http://backend-node:3000
+    ports:
+      - "8001:8001"
+    depends_on:
+      - backend-node
+    restart: unless-stopped

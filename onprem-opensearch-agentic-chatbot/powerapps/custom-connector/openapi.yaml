@@ -1,0 +1,75 @@
+openapi: 3.0.3
+info:
+  title: On-prem Agentic Retrieval Chatbot API
+  version: "1.0.0"
+servers:
+  - url: http://localhost:3000
+paths:
+  /chat:
+    post:
+      summary: Chat with the on-prem agentic retrieval bot
+      operationId: Chat
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [message]
+              properties:
+                message:
+                  type: string
+                  description: Câu hỏi người dùng
+                history:
+                  type: array
+                  description: Lịch sử chat (tối đa 6 turns được dùng)
+                  items:
+                    type: object
+                    required: [role, content]
+                    properties:
+                      role:
+                        type: string
+                        enum: [user, assistant]
+                      content:
+                        type: string
+                filters:
+                  type: object
+                  description: Bộ lọc gợi ý (source, updated_at, doc_id...)
+                  additionalProperties: true
+                debug:
+                  type: boolean
+                  default: false
+      responses:
+        "200":
+          description: Chat response
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+  /health:
+    get:
+      summary: Health check
+      operationId: Health
+      responses:
+        "200":
+          description: ok
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ok:
+                    type: boolean
+  /diagnostics:
+    get:
+      summary: Connectivity diagnostics (OpenSearch + LLM + embeddings)
+      operationId: Diagnostics
+      responses:
+        "200":
+          description: diagnostics result
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true

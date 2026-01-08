@@ -1,0 +1,83 @@
+{
+  "request_id": "demo",
+  "took_ms": 123,
+  "planner_output": {
+    "need_subquery": true,
+    "primary_intent": "howto_procedure",
+    "main_entities": [
+      "vpn",
+      "mật khẩu"
+    ],
+    "time_range": {
+      "from": null,
+      "to": null
+    },
+    "subqueries": [
+      {
+        "id": "q1",
+        "query": "reset mật khẩu vpn",
+        "preferred_search": "hybrid",
+        "top_k": 20,
+        "filters": {
+          "source": [
+            "policy",
+            "sop"
+          ]
+        }
+      }
+    ],
+    "notes": "demo"
+  },
+  "refine_used": false,
+  "evidence": {
+    "ok": true,
+    "reason": "ok"
+  },
+  "executed_queries": [
+    {
+      "subquery_id": "q1",
+      "preferred_search": "hybrid",
+      "query_text": "reset mật khẩu vpn",
+      "filters": {
+        "source": [
+          "policy",
+          "sop"
+        ]
+      },
+      "type": "keyword",
+      "body": {
+        "size": 20,
+        "query": "..."
+      }
+    },
+    {
+      "subquery_id": "q1",
+      "preferred_search": "hybrid",
+      "query_text": "reset mật khẩu vpn",
+      "filters": {
+        "source": [
+          "policy",
+          "sop"
+        ]
+      },
+      "type": "vector",
+      "body": {
+        "size": 20,
+        "query": "..."
+      }
+    }
+  ],
+  "retrieved_chunks": [
+    {
+      "doc_id": "POL-001",
+      "chunk_id": 3,
+      "title": "VPN Password Reset SOP",
+      "updated_at": "2025-01-12",
+      "url": "https://...",
+      "content": "...",
+      "search_type": "hybrid",
+      "_rank": 1
+    }
+  ],
+  "final_answer": "Bạn có thể reset mật khẩu VPN theo các bước ... [POL-001:3] VPN Password Reset SOP (2025-01-12) (https://...)"
+}

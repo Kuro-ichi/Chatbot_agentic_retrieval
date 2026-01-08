@@ -1,0 +1,11 @@
+{
+  "message": "Quy trình reset mật khẩu VPN như thế nào?",
+  "history": [],
+  "filters": {
+    "source": [
+      "policy",
+      "sop"
+    ]
+  },
+  "debug": true
+}
